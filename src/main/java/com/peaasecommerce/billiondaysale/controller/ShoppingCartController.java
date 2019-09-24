@@ -45,18 +45,19 @@ public class ShoppingCartController {
         //List<Product> productList = new ArrayList<>();
         Iterator it = productSet.iterator();
 
-        int i = 1;
         while(it.hasNext()){
-              productOneJson.clear();
               Product product = (Product) it.next();
+
+              productOneJson.clear();
               productOneJson.put("id",product.getId());
               productOneJson.put("name",product.getName());
               productOneJson.put("description",product.getDescription());
               productOneJson.put("price",product.getPrice());
               productOneJson.put("quantity_added",productMap.get(product));
-              productJson.put("Item_"+i,productOneJson);
-              i++;
 
+              productJson.put("Item_"+i,new JSONObject(productOneJson));
+
+              i++;
         }
 
         resultJson.put("products",productJson);
